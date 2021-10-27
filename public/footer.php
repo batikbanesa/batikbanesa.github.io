@@ -39,7 +39,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://www.youtube.com/channel/UCbVARHtWq2ewkNaAXc6QQ5w">
+                        <a href="https://www.youtube.com/channel/UCzmO-X9bD_lZsrtwtE4Y3ag">
                             <i class="socicon socicon-youtube icon icon--xs"></i>
                         </a>
                     </li>
