@@ -5,14 +5,14 @@
                 <div class="col-md-12">
                     <div class="height-50 imagebg border--round" data-overlay="2">
                         <div class="background-image-holder">
-                            <img alt="background" src="img/bg/bgmain2.png" />
+                            <img alt="background" src="img/bg/bgmain.jpg" />
                         </div>
                         <div class="pos-vertical-center col-md-6 col-lg-5 pl-5">
                             <h2>BANESA.</h2>
                             <p class="lead">
-                                Assalamualaikum wr.wb</br>
-                                Halo batik lovers…
-                                BANESA kepanjangan dari Batik Tanah Unesa merupakan batik yang memiliki keunikan dan kekhasan menggunakan pewarna alam dari Tanah menjadikan Banesa berbeda dengan batik lainnya. <a href="#">Baca Selengkapnya</a>
+                                Halo Batik Lovers…
+                                </br>
+                                BANESA kepanjangan dari Batik Tanah Unesa merupakan batik yang memiliki keunikan dan kekhasan menggunakan pewarna alam dari Tanah menjadikan Banesa berbeda dengan batik lainnya. <a href="index.php?page=about">Baca Selengkapnya</a>
                             </p>
                         </div>
                     </div>
@@ -36,175 +36,28 @@
 
                         <div class="masonry__container row">
                             <div class="masonry__item col-md-6 col-lg-3"></div>
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Formal">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/1.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 1 </h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
+                            <?php
+                            $getProduk = mysqli_query($conn, "SELECT * FROM product ORDER BY update_at LIMIT 12");
+                            while ($r = mysqli_fetch_array($getProduk)) {
+                            ?>
+                                <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="<?= productCategory($r['product_category']) ?>">
+                                    <div class="product">
+                                        <a href="#">
+                                            <img alt="Image" src="../app/img/product/<?= $r['product_img'] ?>" />
+                                        </a>
+                                        <a class="block" href="#">
+                                            <div>
+                                                <h5 style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                                                    <?= $r['product_name'] ?></h5>
+                                                <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                                                    <?= $r['product_desc'] ?>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Classic">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/2.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 2</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Casual">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/3.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 3</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Formal">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/4.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 4</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Classic">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/5.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 5</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Casual">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/6.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 6</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Formal">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/7.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 7</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Classic">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/8.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 8</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Casual">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/5.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 9</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Formal">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/6.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 10</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Classic">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/7.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 11</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-                            <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="Casual">
-                                <div class="product">
-                                    <a href="#">
-                                        <img alt="Image" src="img/product/8.jpeg" />
-                                    </a>
-                                    <a class="block" href="#">
-                                        <div>
-                                            <h5>Produk 12</h5>
-                                            <span> Nama Produk</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--end item-->
-
+                                <!--end item-->
+                            <?php } ?>
                         </div>
                         <!--end masonry container-->
                     </div>
@@ -371,7 +224,7 @@
                     <p class="lead">
                         Dosen D4 Tata Busana Program Vokasi Universitas Negeri Surabaya . . .
                         <span class="block type--fine-print">
-                            <a href="about.php">Baca Selengkapnya</a>
+                            <a href="index.php?page=about">Baca Selengkapnya</a>
                         </span>
                     </p>
                 </div>

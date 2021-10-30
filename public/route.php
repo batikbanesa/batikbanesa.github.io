@@ -6,9 +6,9 @@
     <?php include "navbar.php";
 
     $page = '';
-    if (!isset($_GET['p'])) {
+    if (!isset($_GET['page'])) {
         $page = '';
-    } else $page = ($_GET['p']);
+    } else $page = ($_GET['page']);
 
     if ($page == '') {
         require_once "home.php";
@@ -19,9 +19,7 @@
     } elseif ($page == 'about') {
         require_once 'about.php';
     } else require_once "home.php";
-
     ?>
-    <?php include "footer.php" ?>
 
 
     <!--<div class="loader"></div>-->
@@ -45,5 +43,6 @@
     <script src="js/smooth-scroll.min.js"></script>
     <script src="js/scripts.js"></script>
 </body>
+<?php include "footer.php" ?>
 
 </html>

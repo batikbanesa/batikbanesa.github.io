@@ -1,40 +1,59 @@
-<nav id="menu2" class="bar bar-2 hidden-xs ">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
-                <div class="bar__module">
-                    <a href="index.html">
-                        <img class="logo logo-dark" alt="logo" src="img/logo/logo5.png" />
-                        <img class="logo logo-light" alt="logo" src="img/logo/logo5.png" />
-                    </a>
-                </div>
-                <!--end module-->
-            </div>
-            <div class="col-lg-5 order-lg-1">
-                <div class="">
-                    <ul class="menu-horizontal text-left">
-                        <li class="dropdown">
-                            <a href="index.php">
-                                Home
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="index.php?p=product">
-                                Product
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="index.php?p=about">
-                                About
-                            </a>
-                        </li>
+<div class="bar" data-scroll-class="100px:pos-fixed">
+    <div class="nav-container ">
+        <div class="bar bar--sm visible-xs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 col-md-2">
 
-                    </ul>
+                    </div>
+                    <div class="col-9 col-md-10 text-right">
+                        <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs">
+                            <i class="icon icon--sm stack-interface stack-menu"></i>
+                        </a>
+                    </div>
                 </div>
-                <!--end module-->
-
+                <!--end of row-->
             </div>
-            <!--end of row-->
+            <!--end of container-->
         </div>
-        <!--end of container-->
-</nav>
+        <!--end bar-->
+        <nav id="menu1" class="bar bar--sm bar-1 hidden-xs ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-1 col-md-2 hidden-xs">
+                        <div class="bar__module">
+                            <a href="index.php">
+
+                            </a>
+                        </div>
+                        <!--end module-->
+                    </div>
+                    <div class="col-lg-11 col-md-12 text-center text-right-xs text-right-sm">
+                        <div class="bar__module">
+                            <ul class="menu-horizontal text-right">
+                                <li class="">
+                                    <a href="index.php">
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="index.php?page=product">
+                                        Produk
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="index.php?page=about">
+                                        About
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </nav>
+        <!--end bar-->
+    </div>
+</div>

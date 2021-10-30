@@ -19,17 +19,7 @@
             <div class="col-md-6 text-right text-center-xs">
                 <ul class="social-list list-inline list--hover">
                     <li class="list-inline-item">
-                        <a href="#">
-                            <i class="socicon socicon-google icon icon--xs"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="socicon socicon-twitter icon icon--xs"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
+                        <a href="https://www.facebook.com/irma.hermawan">
                             <i class="socicon socicon-facebook icon icon--xs"></i>
                         </a>
                     </li>
@@ -52,12 +42,6 @@
                 <p class="type--fine-print">
                     Telah memperoleh HAKI Sejak 2016
                 </p>
-            </div>
-            <div class="col-md-6 text-right text-center-xs">
-                <span class="type--fine-print">&copy;
-                    <span class="update-year"></span> Banesa Inc.</span>
-                <a class="type--fine-print" href="#">Privacy Policy</a>
-                <a class="type--fine-print" href="#">Legal</a>
             </div>
         </div>
         <!--end of row-->
