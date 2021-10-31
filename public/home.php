@@ -42,10 +42,10 @@
                             ?>
                                 <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="<?= productCategory($r['product_category']) ?>">
                                     <div class="product">
-                                        <a href="#">
+                                        <a href="index.php?page=product&act=detail&id=<?= $r['product_id'] ?>">
                                             <img alt="Image" src="../app/img/product/<?= $r['product_img'] ?>" />
                                         </a>
-                                        <a class="block" href="#">
+                                        <a class="block" href="index.php?page=product&act=detail&id=<?= $r['product_id'] ?>">
                                             <div>
                                                 <h5 style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                                     <?= $r['product_name'] ?></h5>
@@ -122,51 +122,16 @@
                 <div class="col-md-7 col-lg-6">
                     <div class="slider border--round boxed--border" data-paging="true" data-arrows="true">
                         <ul class="slides">
-                            <li>
-                                <img alt="Image" src="img/product/1.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/2.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/3.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/4.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/5.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/6.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/7.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/8.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/9.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/10.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/11.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/12.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/13.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/14.jpeg" />
-                            </li>
-                            <li>
-                                <img alt="Image" src="img/product/15.jpeg" />
-                            </li>
+                            <?php
+                            $getImg = mysqli_query($conn, "SELECT * FROM product ORDER BY product_seen DESC LIMIT 12");
+                            while ($r = mysqli_fetch_array($getImg)) {
+                                echo " 
+                                <li>
+                                    <img alt='Image' src='../app/img/product/$r[product_img]' />
+                                </li>
+                            ";
+                            } ?>
+
 
                         </ul>
                     </div>

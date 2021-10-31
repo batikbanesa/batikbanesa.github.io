@@ -20,10 +20,10 @@
                             ?>
                                 <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="<?= productCategory($r['product_category']) ?>">
                                     <div class="product">
-                                        <a href="#">
+                                        <a href="index.php?page=product&act=detail&id=<?= $r['product_id'] ?>">
                                             <img alt="Image" src="../app/img/product/<?= $r['product_img'] ?>" />
                                         </a>
-                                        <a class="block" href="#">
+                                        <a class="block" href="index.php?page=product&act=detail&id=<?= $r['product_id'] ?>">
                                             <div>
                                                 <h5 style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                                     <?= $r['product_name'] ?></h5>
@@ -56,7 +56,7 @@
 
                                 <li class="col-md-4 col-12">
                                     <div class="feature feature-3 boxed boxed--lg boxed--border text-center">
-                                        <a href="#">
+                                        <a href="index.php?page=product&act=detail&id=<?= $row['product_id'] ?>">
                                             <img alt="Image" src="../app/img/product/<?= $row['product_img'] ?>" />
                                         </a>
                                         <h4><?= $row['product_name'] ?></h4>
@@ -91,7 +91,7 @@
 
                                 <li class="col-md-4 col-12">
                                     <div class="feature feature-3 boxed boxed--lg boxed--border text-center">
-                                        <a href="#">
+                                        <a href="index.php?page=product&act=detail&id=<?= $row['product_id'] ?>">
                                             <img alt="Image" src="../app/img/product/<?= $row['product_img'] ?>" />
                                         </a>
                                         <h4><?= $row['product_name'] ?></h4>
@@ -114,9 +114,157 @@
     </section>
 <?php
 } elseif ($_GET['act'] == 'detail') {
+    mysqli_query($conn, "UPDATE product SET product_seen = (product_seen+1) WHERE product_id = '$_GET[id]'");
+    $getProduk = mysqli_query($conn, "SELECT * FROM product where product_id = '$_GET[id]'");
+    $r = mysqli_fetch_array($getProduk);
+    $pesan = "Hai, saya ingin memesan produk *" . $r['product_name'] . "*, apakah produk masih tersedia? Mohon info lebih lanjut . . .";
+    $link = urlencode($pesan);
 ?>
 
+    <div class="main-container">
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1><?= $r['product_name'] ?></h1>
+                        <ol class="breadcrumbs">
+                            <li>
+                                <a href="index.php?page=home">Home</a>
+                            </li>
+                            <li>
+                                <a href="index.php?page=product">Product</a>
+                            </li>
+                            <li><?= $r['product_name'] ?></li>
+                        </ol>
+                        <hr>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="space--lg">
+            <div class="container">
+                <div class="row justify-content-around">
+                    <div class="col-md-7 col-lg-6">
+                        <div class="slider border--round boxed--border" data-paging="true" data-arrows="true">
+                            <ul class="slides">
+                                <li>
+                                    <img alt="Image" src="../app/img/product/<?= $r['product_img'] ?>" />
+                                </li>
+                            </ul>
+                        </div>
+                        <!--end slider-->
+                    </div>
+                    <div class="col-md-5 col-lg-4">
+                        <h2><?= $r['product_name'] ?></h2>
+                        <div class="text-block">
+                            <span class="h4 inline-block">Rp<?= $r['product_price'] ?></span>
+                        </div>
+                        <p>
+                            <?= $r['product_desc'] ?>
+                        </p>
+                        <ul class="accordion accordion-2 accordion--oneopen">
+                            <li>
+                                <div class="accordion__title">
+                                    <span class="h5">Spesifikasi</span>
+                                </div>
+                                <div class="accordion__content">
+                                    <ul class="bullets">
+                                        <li>
+                                            <span>Banesa Mix Pewarna Alam</span>
+                                        </li>
+                                        <li>
+                                            <span>Banesa Putian</span>
+                                        </li>
+                                        <li>
+                                            <span>Banesa 2 Pewarna Alam</span>
+                                        </li>
+                                        <li>
+                                            <span>Banesa Mix Sintetis</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="active">
+                                <div class="accordion__title">
+                                    <span class="h5">Dimensi</span>
+                                </div>
+                                <div class="accordion__content">
+                                    <ul>
+                                        <li>
+                                            <span>Product: </span>
+                                        </li>
+                                        <li>
+                                            <span>Kemasan: </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="accordion__title">
+                                    <span class="h5">Info Pemesanan</span>
+                                </div>
+                                <div class="accordion__content">
+                                    <p>
+                                        Pemesanan dapat melalui chat WhatsApp, Direct Message, atau <a href="http://wa.me/6281217639883?text=<?= $pesan ?>">klik link ini</a>. </br>
+                                        Pembayaran dapat dilakukan melalui media :
+                                    </p>
+                                </div>
+                            </li>
 
+                        </ul>
+                        <ul>
+                            <div class="col-md-6 col-lg-8">
+                                <a class="btn bg--twitter" href="http://wa.me/6281217639883?text=<?= $pesan ?>">
+                                    <span class="btn__text"><i class="icon-class"></i>Pesan Sekarang</span>
+                                </a>
+                            </div>
+                        </ul>
+                        <!--end accordion-->
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Produk Lainnya</h2>
+                        <div class="slider" data-arrows="false" data-paging="true">
+                            <ul class="slides">
+                                <?php
+                                $getPopProd = mysqli_query($conn, "SELECT * FROM product ORDER BY product_seen DESC LIMIT 6");
+                                while ($row = mysqli_fetch_array($getPopProd)) {
+                                ?>
+
+                                    <li class="col-md-4 col-12">
+                                        <div class="feature feature-3 boxed boxed--lg boxed--border text-center">
+                                            <a href="index.php?page=product&act=detail&id=<?= $row['product_id'] ?>">
+                                                <img alt="Image" src="../app/img/product/<?= $row['product_img'] ?>" />
+                                            </a>
+                                            <h4><?= $row['product_name'] ?></h4>
+                                            <p>
+                                                <?= $row['product_desc'] ?>
+                                            </p>
+
+                                        </div>
+                                        <!--end feature-->
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <!--end of row-->
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+
+    </div>
 
 <?php
 } ?>
