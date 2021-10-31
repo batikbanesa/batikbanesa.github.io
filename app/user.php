@@ -28,8 +28,8 @@
                     <td>$i[users_email]</td>
                     <td>$i[update_at]</td>
                     <td>
-                    <a href='index.php?page=user&act=edit&id=$i[users_id]'>Edit</a>
-                    <a href='index.php?page=user&act=delete&id=$i[users_id]' onclick=\"return confirm('Are you sure?')\">Delete</a>
+                    <a href='index.php?page=user&act=edit&id=$i[users_id]' class='btn'>Edit</a>
+                    <a href='index.php?page=user&act=delete&id=$i[users_id]' onclick=\"return confirm('Are you sure?')\" class='btn'>Delete</a>
                     </td></tr>";
             }
             ?>

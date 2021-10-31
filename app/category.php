@@ -24,8 +24,8 @@
                     <td>$i[category_id]</td>
                     <td>$i[category_name]</td>
                     <td>
-                    <a href='index.php?page=category&act=edit&id=$i[category_id]'>Edit</a>
-                    <a href='index.php?page=category&act=delete&id=$i[category_id]' onclick=\"return confirm('Are you sure?')\">Delete</a>
+                    <a href='index.php?page=category&act=edit&id=$i[category_id]' class='btn'>Edit</a>
+                    <a href='index.php?page=category&act=delete&id=$i[category_id]' onclick=\"return confirm('Are you sure?')\" class='btn'>Delete</a>
                     </td></tr>";
             }
             ?>

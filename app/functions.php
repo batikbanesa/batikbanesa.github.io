@@ -3,7 +3,7 @@
 function getTable($tableName)
 {
     global $conn;
-    $result = mysqli_query($conn, "select * from $tableName ORDER BY " . $tableName . "_id DESC");
+    $result = mysqli_query($conn, "select * from $tableName ORDER BY " . $tableName . "_id ASC");
     return $result;
 }
 

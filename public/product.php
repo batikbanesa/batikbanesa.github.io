@@ -116,7 +116,7 @@
 } elseif ($_GET['act'] == 'detail') {
 ?>
 
-    <a href="https://wa.me/6282274839576">wa.me</a>
+
 
 <?php
 } ?>

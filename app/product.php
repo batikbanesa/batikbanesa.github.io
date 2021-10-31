@@ -27,7 +27,7 @@
             $no = 1;
             while ($i = mysqli_fetch_array($data)) {
                 echo "<tr>
-                <td>$i[product_id]</td>
+                <td>$no</td>
                 <td>$i[product_name]</td>
                 <td>$i[product_desc]</td>
                 <td>" . productCategory($i['product_category']) . "</td>
@@ -36,9 +36,10 @@
                 <td>$i[product_price]</td>
                 <td>$i[product_seen]</td>
                 <td>
-                <a href='index.php?page=product&act=edit&id=$i[product_id]'>Edit</a>
-                <a href='index.php?page=product&act=delete&id=$i[product_id]' onclick=\"return confirm('Are you sure?')\">Delete</a>
+                <a href='index.php?page=product&act=edit&id=$i[product_id]' class='btn btn-primary'>Edit</a>
+                <a href='index.php?page=product&act=delete&id=$i[product_id]' onclick=\"return confirm('Are you sure?')\" class='btn bg-danger'>Delete</a>
                 </td></tr>";
+                $no++;
             }
             ?>
         </tbody>
