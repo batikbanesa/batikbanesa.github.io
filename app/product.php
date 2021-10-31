@@ -97,16 +97,16 @@
                     </select>
                 </div>
                 <div class="input-field col s12">
-                    <input id="gambar" name="gambar" type="file" required>
-                    <label for="gambar" class="">Gambar Produk</label>
-                </div>
-                <div class="input-field col s12">
                     <input id="product_stock" name="product_stock" type="number" required>
                     <label for="product_stock" class="">Stok Produk</label>
                 </div>
                 <div class="input-field col s12">
                     <input id="product_price" name="product_price" type="number" required>
                     <label for="product_price" class="">Harga Produk</label>
+                </div>
+                <div class="btn default">
+                    <span>Gambar Produk (.jpg, .jpeg, .png)</span>
+                    <input id="gambar" name="gambar" type="file">
                 </div>
                 <div class="input-field col s12">
                     <button class="btn waves-effect waves-light right default" type="submit" name="submit">Submit <i class="material-icons right">send</i></button>
@@ -163,16 +163,16 @@
                     </select>
                 </div>
                 <div class="input-field col s12">
-                    <input id="gambar" name="gambar" type="file" value="<?= $item['product_img'] ?>">
-                    <label for="gambar" class="">Gambar Produk</label>
-                </div>
-                <div class="input-field col s12">
                     <input id="product_stock" name="product_stock" type="number" value="<?= $item['product_stock'] ?>" required>
                     <label for="product_stock" class="">Stok Produk</label>
                 </div>
                 <div class="input-field col s12">
                     <input id="product_price" name="product_price" type="number" value="<?= $item['product_price'] ?>" required>
                     <label for="product_price" class="">Harga Produk</label>
+                </div>
+                <div class="btn default">
+                    <span>Gambar Produk (.jpg, .jpeg, .png)</span>
+                    <input id="gambar" name="gambar" type="file" value="<?= $item['product_img'] ?>">
                 </div>
                 <div class="input-field col s12">
                     <button class="btn waves-effect waves-light right default" type="submit" name="update">Update <i class="material-icons right">send</i></button>

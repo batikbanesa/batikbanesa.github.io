@@ -37,7 +37,7 @@
                         <div class="masonry__container row">
                             <div class="masonry__item col-md-6 col-lg-3"></div>
                             <?php
-                            $getProduk = mysqli_query($conn, "SELECT * FROM product ORDER BY update_at LIMIT 12");
+                            $getProduk = mysqli_query($conn, "SELECT * FROM product ORDER BY product_seen DESC LIMIT 12");
                             while ($r = mysqli_fetch_array($getProduk)) {
                             ?>
                                 <div class="masonry__item col-md-6 col-lg-3" data-masonry-filter="<?= productCategory($r['product_category']) ?>">
