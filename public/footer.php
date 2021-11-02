@@ -33,6 +33,11 @@
                             <i class="socicon socicon-youtube icon icon--xs"></i>
                         </a>
                     </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.youtube.com/channel/UCzmO-X9bD_lZsrtwtE4Y3ag">
+                            <i class="socicon socicon-whatsapp icon icon--xs"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

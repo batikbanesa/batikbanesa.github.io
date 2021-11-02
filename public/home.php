@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-md-5 col-lg-4">
                     <ul class="accordion accordion-2 accordion--oneopen">
-                        <li>
+                        <li class="active">
                             <div class="accordion__title">
                                 <span class="h5">Latar Belakang</span>
                             </div>
@@ -150,7 +150,7 @@
 
                             </div>
                         </li>
-                        <li class="active">
+                        <li class="">
                             <div class="accordion__title">
                                 <span class="h5">Sejarah</span>
                             </div>

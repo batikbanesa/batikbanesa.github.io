@@ -45,113 +45,27 @@
                     <h2>Media</h2>
                     <div class="slider" data-arrows="false" data-paging="true">
                         <ul class="slides">
-                            <li class="col-md-4 col-12">
-                                <div class="feature feature-1">
-                                    <img alt="Image" src="img/media/1.png" />
-                                    <div class="feature__body boxed boxed--border">
-                                        <h5>jawapos</h5>
-                                        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            Irma Russanti, Dosen Unesa Berinovasi Batik Berpewarna Tanah
-                                        </p>
-                                        <a href="https://www.jawapos.com/features/21/06/2017/irma-russanti-dosen-unesa-berinovasi-batik-berpewarna-tanah/">
-                                            Learn More
-                                        </a>
+                            <?php
+                            $getMedia = mysqli_query($conn, "SELECT * FROM media ORDER BY media_seen DESC");
+                            while ($r = mysqli_fetch_array($getMedia)) {
+                                echo " 
+                                <li class='col-md-4 col-12'>
+                                    <div class='feature feature-1'>
+                                        <img alt='Image' src='../app/img/media/" . $r['media_thumb'] . "' />
+                                        <div class='feature__body boxed boxed--border'>
+                                            <h5>" . $r['media_title'] . "</h5>
+                                            <p style='overflow: hidden;white-space: nowrap;text-overflow: ellipsis;'>
+                                                " . $r['media_desc'] . "
+                                            </p>
+                                            <a href='redirect.php?id=" . $r['media_id'] . "&link=" . $r["media_link"] . "'>
+                                                Learn More
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--end feature-->
-                            </li>
-                            <li class="col-md-4 col-12">
-                                <div class="feature feature-1">
-                                    <img alt="Image" src="img/media/2.png" />
-                                    <div class="feature__body boxed boxed--border">
-                                        <h5>unesa</h5>
-                                        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            Irma Russanti, Dosen PKK Pemilik 10 HaKI
-                                        </p>
-                                        <a href="https://www.unesa.ac.id/irma-russanti-dosen-pkk-pemilik-10-haki">
-                                            Learn More
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--end feature-->
-                            </li>
-                            <li class="col-md-4 col-12">
-                                <div class="feature feature-1">
-                                    <img alt="Image" src="img/media/3.png" />
-                                    <div class="feature__body boxed boxed--border">
-                                        <h5>Googla Play Books</h5>
-                                        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            Exploration Of Soil Batik
-                                        </p>
-                                        <a href="https://play.google.com/store/books/details/Exploration_Of_Soil_Batik?id=hDHTDwAAQBAJ&gl=US">
-                                            Learn More
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--end feature-->
-                            </li>
-                            <li class="col-md-4 col-12">
-                                <div class="feature feature-1">
-                                    <img alt="Image" src="img/media/4.png" />
-                                    <div class="feature__body boxed boxed--border">
-                                        <h5>Google Play Books</h5>
-                                        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            Desain Kebaya Sunda
-                                        </p>
-                                        <a href="https://www.google.co.id/books/edition/Desain_Kebaya_Sunda/emmMDwAAQBAJ?hl=en&gbpv=0">
-                                            Learn More
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--end feature-->
-                            </li>
-                            <li class="col-md-4 col-12">
-                                <div class="feature feature-1">
-                                    <img alt="Image" src="img/media/5.png" />
-                                    <div class="feature__body boxed boxed--border">
-                                        <h5>Google Play Books</h5>
-                                        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            Eksplorasi Batik Tanah
-                                        </p>
-                                        <a href="https://www.google.co.id/books/edition/Eksplorasi_Batik_Tanah/MbKLDwAAQBAJ?hl=en&sa=X&ved=2ahUKEwj9scrRyeTzAhUYfH0KHThADZ0QiqUDegQIBhAC">
-                                            Learn More
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--end feature-->
-                            </li>
-                            <li class="col-md-4 col-12">
-                                <div class="feature feature-1">
-                                    <img alt="Image" src="img/media/6.png" />
-                                    <div class="feature__body boxed boxed--border">
-                                        <h5>Google Play Books</h5>
-                                        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            Sejarah Perkembangan Kebaya Sunda
-                                        </p>
-                                        <a href="https://www.google.co.id/books/edition/Sejarah_Perkembangan_Kebaya_Sunda/Im-LDwAAQBAJ?hl=en&sa=X&ved=2ahUKEwif8eLnyeTzAhUCgUsFHW-EDX0QiqUDegQIBRAH">
-                                            Learn More
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--end feature-->
-                            </li>
-                            <li class="col-md-4 col-12">
-                                <div class="feature feature-1">
-                                    <img alt="Image" src="img/media/7.png" />
-                                    <div class="feature__body boxed boxed--border">
-                                        <h5>Google Play Books</h5>
-                                        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            History of The Development of Kebaya Sunda
-                                        </p>
-                                        <a href="https://www.google.co.id/books/edition/History_of_The_Development_of_Kebaya_Sun/pOS3DwAAQBAJ?hl=en&gbpv=0">
-                                            Learn More
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--end feature-->
-                            </li>
-
-
+                                    <!--end feature-->
+                                </li>
+                            ";
+                            } ?>
                         </ul>
                     </div>
                     <!--end of row-->

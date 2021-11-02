@@ -6,44 +6,48 @@
         </a>
     </div>
     <span class="card-title dark4">Produk</span>
-
-    <table class="responsive-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>Deskripsi</th>
-                <th>Kategori</th>
-                <th>Gambar</th>
-                <th>Stok</th>
-                <th>Harga</th>
-                <th>Dilihat</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $data = getTable("product");
-            $no = 1;
-            while ($i = mysqli_fetch_array($data)) {
-                echo "<tr>
-                <td>$no</td>
-                <td>$i[product_name]</td>
-                <td>$i[product_desc]</td>
-                <td>" . productCategory($i['product_category']) . "</td>
-                <td><img src='img/product/$i[product_img]' style='height:100px;' alt='$i[product_img]'></td>
-                <td>$i[product_stock]</td>
-                <td>$i[product_price]</td>
-                <td>$i[product_seen]</td>
-                <td>
-                <a href='index.php?page=product&act=edit&id=$i[product_id]' class='btn btn-primary'>Edit</a>
-                <a href='index.php?page=product&act=delete&id=$i[product_id]' onclick=\"return confirm('Are you sure?')\" class='btn bg-danger'>Delete</a>
-                </td></tr>";
-                $no++;
-            }
-            ?>
-        </tbody>
-    </table>
+    <div class="table_responsive" id="table_product">
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th><a class="column_sort" id="product_id" data-order="desc" href="#">ID</a></th>
+                    <th><a class="column_sort" id="product_name" data-order="desc" href="#">Nama</a></th>
+                    <th> <a class="column_sort" id="product_desc" data-order="desc" href="#">Deskripsi</a></th>
+                    <th> <a class="column_sort" id="product_category" data-order="desc" href="#">Kategori</a></th>
+                    <th> <a class="column_sort" id="product_img" data-order="desc" href="#">Gambar</a></th>
+                    <th> <a class="column_sort" id="product_stock" data-order="desc" href="#">Stok</a></th>
+                    <th> <a class="column_sort" id="product_price" data-order="desc" href="#">Harga</a></th>
+                    <th> <a class="column_sort" id="product_seen" data-order="desc" href="#">Dilihat</a></th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $no = 1;
+                $query = "SELECT * FROM product ORDER BY product_name ASC";
+                $dewan1 = $db1->prepare($query);
+                $dewan1->execute();
+                $res1 = $dewan1->get_result();
+                while ($row = $res1->fetch_assoc()) {
+                ?>
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $row["product_name"]; ?></td>
+                        <td><?php echo $row["product_desc"]; ?></td>
+                        <td><?php echo $row["product_category"]; ?></td>
+                        <td><img src="img/product/<?= $row['product_img'] ?>" style='height:100px;' alt="<?= $row['product_img'] ?>"></td>
+                        <td><?php echo $row["product_stock"]; ?></td>
+                        <td><?php echo rupiah($row["product_price"]); ?></td>
+                        <td><?php echo $row["product_seen"]; ?></td>
+                        <td>
+                            <a href='index.php?page=product&act=edit&id=<?= $row['product_id'] ?>' class='btn btn-primary'>Edit</a>
+                            <a href='index.php?page=product&act=delete&id=<?= $row['product_id'] ?>' onclick='return confirm("Are you sure?")' class='btn bg-danger'>Delete</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
     </div>
 <?php
 } elseif ($_GET['act'] == 'delete') {
@@ -79,7 +83,7 @@
         <form action='' method="POST" class="col s12 no-padding" enctype="multipart/form-data">
             <div class="row no-margin">
                 <div class="input-field col s12">
-                    <input id="product_name" name="product_name" type="text" required>
+                    <input id="product_name" name="product_name" type="text" required autofocus>
                     <label for="product_name" class="">Nama Produk</label>
                 </div>
                 <div class="input-field col s12">
@@ -145,7 +149,7 @@
         <form action='' method="POST" class="col s12 no-padding" enctype="multipart/form-data">
             <div class="row no-margin">
                 <div class="input-field col s12">
-                    <input id="product_name" name="product_name" type="text" value="<?= $item['product_name'] ?>" required>
+                    <input id="product_name" name="product_name" type="text" value="<?= $item['product_name'] ?>" required autofocus>
                     <label for="product_name" class="">Nama Produk</label>
                 </div>
                 <div class="input-field col s12">
@@ -181,3 +185,30 @@
         </form>
     </div>
 <?php } ?>
+
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.column_sort', function() {
+            var nama_kolom = $(this).attr("id");
+            var order = $(this).data("order");
+            var arrow = '';
+            if (order == 'desc') {
+                arrow = '&nbsp;<span class="fa fa-arrow-down"></span>';
+            } else {
+                arrow = '&nbsp;<span class="fa fa-arrow-up"></span>';
+            }
+            $.ajax({
+                url: "sort.php",
+                method: "POST",
+                data: {
+                    nama_kolom: nama_kolom,
+                    order: order
+                },
+                success: function(data) {
+                    $('#table_product').html(data);
+                    $('#' + nama_kolom + '').append(arrow);
+                }
+            })
+        });
+    });
+</script>

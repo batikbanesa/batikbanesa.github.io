@@ -97,6 +97,51 @@ function addProduct($data)
     return (mysqli_affected_rows($conn));
 }
 
+function addMedia($data)
+{
+    global $conn;
+    $media_title = htmlspecialchars($data["media_title"]);
+    $media_desc = htmlspecialchars($data["media_desc"]);
+    $media_link = htmlspecialchars($data["media_link"]);
+
+    //upload gambar
+    $gambar    = uploadMedia();
+    if (!$gambar) {
+        return false;
+    }
+
+    //query insert data
+    $query  = "INSERT INTO media
+			VALUES (null, '$media_title', '$media_desc', '$media_link', '1', '$gambar', current_timestamp)";
+    mysqli_query($conn, $query);
+    return (mysqli_affected_rows($conn));
+}
+
+function updateMedia($data)
+{
+    global $conn;
+    $media_title = htmlspecialchars($data["media_title"]);
+    $media_desc = htmlspecialchars($data["media_desc"]);
+    $media_link = htmlspecialchars($data["media_link"]);
+
+    //upload gambar
+    $gambar    = $_FILES['gambar']['name'];
+    if ($gambar == '') {
+        $query  = "UPDATE media
+			SET `media_title` = '$media_title', `media_desc` = '$media_desc', `media_link` = '$media_link', update_at = current_timestamp
+            WHERE media_id = '$_GET[id]'";
+        mysqli_query($conn, $query);
+    } else {
+        $nameBefore = mysqli_fetch_assoc(getItem('media', $_GET['id']))['media_thumb'];
+        $gambar = uploadUpdateMedia($nameBefore);
+        $query  = "UPDATE media
+			SET media_thumb = '$gambar', `media_title` = '$media_title', `media_desc` = '$media_desc', `media_link` = '$media_link', update_at = current_timestamp
+            WHERE media_id = '$_GET[id]'";
+        mysqli_query($conn, $query);
+    }
+    return (mysqli_affected_rows($conn));
+}
+
 function updateProduct($data)
 {
     global $conn;
@@ -123,7 +168,49 @@ function updateProduct($data)
     }
     return (mysqli_affected_rows($conn));
 }
+function uploadUpdateMedia($nameBefore)
+{
 
+    $namaFile = $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+    // cek apakah gambar di upload
+    if ($error === 4) {
+        echo "<script>
+				alert ('Pilih Gambar terlebih dahulu');
+			</script>";
+        return 'false';
+    }
+
+    //cek apakah yang di upload adalah gambar
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "<script>
+				alert ('Yang Anda Upload Bukan Gambar');
+			</script>";
+        return false;
+    }
+
+    //cek jika ukuran terlalu besar 
+    if ($ukuranFile > 30000000) {
+        echo "<script>
+				alert ('Ukuran Gambar telalu Besar');
+			</script>";
+        return false;
+    }
+
+    //lolos pengecekan
+    //generate nama file baru
+    // $namaFileBaru = uniqid();
+    // $namaFileBaru .= '.';
+    // $namaFileBaru .= $ekstensiGambar;
+    move_uploaded_file($tmpName, 'img/media/' . $nameBefore);
+    return $nameBefore;
+}
 function uploadUpdate($nameBefore)
 {
 
@@ -167,7 +254,49 @@ function uploadUpdate($nameBefore)
     move_uploaded_file($tmpName, 'img/product/' . $nameBefore);
     return $nameBefore;
 }
+function uploadMedia()
+{
 
+    $namaFile = $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+    // cek apakah gambar di upload
+    if ($error === 4) {
+        echo "<script>
+				alert ('Pilih Gambar terlebih dahulu');
+			</script>";
+        return 'false';
+    }
+
+    //cek apakah yang di upload adalah gambar
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "<script>
+				alert ('Yang Anda Upload Bukan Gambar');
+			</script>";
+        return false;
+    }
+
+    //cek jika ukuran terlalu besar 
+    if ($ukuranFile > 30000000) {
+        echo "<script>
+				alert ('Ukuran Gambar telalu Besar');
+			</script>";
+        return false;
+    }
+
+    //lolos pengecekan
+    //generate nama file baru
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiGambar;
+    move_uploaded_file($tmpName, 'img/media/' . $namaFileBaru);
+    return $namaFileBaru;
+}
 function upload()
 {
 
@@ -217,4 +346,10 @@ function productCategory($data)
     global $conn;
     $getCategory = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM category WHERE category_id = '$data'"));
     return $getCategory["category_name"];
+}
+
+function rupiah($angka)
+{
+    $hasil_rupiah = number_format($angka, 0, ',', '.');
+    return $hasil_rupiah;
 }

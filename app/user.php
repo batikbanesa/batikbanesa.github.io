@@ -83,16 +83,16 @@
         <form action='' method="POST" class="col s12 no-padding">
             <div class="row no-margin">
                 <div class="input-field col s12">
-                    <input id="name" name="name" type="text" value="<?= $item['name'] ?>" required>
+                    <input id="name" name="name" type="text" value="<?= $item['users_name'] ?>" required>
                     <label for="name" class="">Name</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="email" name="email" type="email" value="<?= $item['email'] ?>" required>
+                    <input id="email" name="email" type="email" value="<?= $item['users_email'] ?>" required>
                     <label for="email" class="">Email</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="password" name="password" type="password" placeholder="ignore if not any change">
-                    <label for="password" class="">Password</label>
+                    <input id="users_password" name="users_password" type="password" placeholder="Kosongkan jika tidak ada perubahan">
+                    <label for="users_password" class="">Password</label>
                 </div>
                 <div class="input-field col s12">
                     <button class="btn waves-effect waves-light right default" type="submit" name="update">Update <i class="material-icons right">send</i></button>

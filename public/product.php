@@ -159,13 +159,13 @@
                     <div class="col-md-5 col-lg-4">
                         <h2><?= $r['product_name'] ?></h2>
                         <div class="text-block">
-                            <span class="h4 inline-block">Rp<?= $r['product_price'] ?></span>
+                            <span class="h4 inline-block">Rp <?= rupiah($r['product_price']) ?></span>
                         </div>
                         <p>
                             <?= $r['product_desc'] ?>
                         </p>
                         <ul class="accordion accordion-2 accordion--oneopen">
-                            <li>
+                            <li class="active">
                                 <div class="accordion__title">
                                     <span class="h5">Spesifikasi</span>
                                 </div>
@@ -186,7 +186,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="active">
+                            <li class="">
                                 <div class="accordion__title">
                                     <span class="h5">Dimensi</span>
                                 </div>

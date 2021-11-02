@@ -79,7 +79,7 @@
                                         <form method="post">
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">mail</i>
-                                                <input id="user" name="user" type="text" require>
+                                                <input id="user" name="user" type="text" require autofocus>
                                                 <label for="user">Email</label>
                                             </div>
                                             <div class="input-field col s12">

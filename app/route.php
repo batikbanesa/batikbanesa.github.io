@@ -15,6 +15,8 @@
     <link href="plugins/morris.js/morris.css" type="text/css" rel="stylesheet" />
     <link href="css/app-style.css" type="text/css" rel="stylesheet" />
     <link href="themes/app-theme.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -40,8 +42,6 @@
         <div class="section me-page-body">
             <!--Dashboard analytics-->
             <div class="row center m-b-no">
-
-
                 <!--Recent registrations table-->
                 <div class="row m-b-no">
                     <div class="col s12">
@@ -52,6 +52,8 @@
                                 elseif ($_GET['page'] == 'user') include "user.php";
                                 elseif ($_GET['page'] == 'product') include "product.php";
                                 elseif ($_GET['page'] == 'category') include "category.php";
+                                elseif ($_GET['page'] == 'media') include "media.php";
+                                elseif ($_GET['page'] == 'reset') include "reset.php";
                                 ?>
                             </div>
                         </div>
