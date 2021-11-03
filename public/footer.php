@@ -3,18 +3,7 @@
         <div class="row">
             <div class="col-md-6">
                 <img alt="Image" class="logo" src="img/logo/3.png" />
-                <ul class="list-inline list--hover">
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <span class="type--fine-print">Get Started</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <span class="type--fine-print">help@banesa.io</span>
-                        </a>
-                    </li>
-                </ul>
+
             </div>
             <div class="col-md-6 text-right text-center-xs">
                 <ul class="social-list list-inline list--hover">
@@ -34,8 +23,8 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://www.youtube.com/channel/UCzmO-X9bD_lZsrtwtE4Y3ag">
-                            <i class="socicon socicon-whatsapp icon icon--xs"></i>
+                        <a href="http://wa.me/6281217639883?text=<?= urlencode('Hai Admin Batik Tanah Unesa') ?>">
+                            <i class=" socicon socicon-whatsapp icon icon--xs"></i>
                         </a>
                     </li>
                 </ul>

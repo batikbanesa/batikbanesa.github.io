@@ -34,7 +34,7 @@
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $row["product_name"]; ?></td>
                         <td><?php echo $row["product_desc"]; ?></td>
-                        <td><?php echo $row["product_category"]; ?></td>
+                        <td><?php echo productCategory($row["product_category"]); ?></td>
                         <td><img src="img/product/<?= $row['product_img'] ?>" style='height:100px;' alt="<?= $row['product_img'] ?>"></td>
                         <td><?php echo $row["product_stock"]; ?></td>
                         <td><?php echo rupiah($row["product_price"]); ?></td>

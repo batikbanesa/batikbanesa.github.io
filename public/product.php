@@ -208,7 +208,7 @@
                                 <div class="accordion__content">
                                     <p>
                                         Pemesanan dapat melalui chat WhatsApp, Direct Message, atau <a href="http://wa.me/6281217639883?text=<?= $pesan ?>">klik link ini</a>. </br>
-                                        Pembayaran dapat dilakukan melalui media :
+
                                     </p>
                                 </div>
                             </li>

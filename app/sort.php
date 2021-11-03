@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-
+include "functions.php";
 $output = '';
 $order = $_POST["order"];
 if ($order == 'desc') {
@@ -40,7 +40,7 @@ while ($row = $res1->fetch_assoc()) {
            <td>' . $no++ . '</td>
            <td>' . $row["product_name"] . '</td>
            <td>' . $row["product_desc"] . '</td>
-           <td>' . $row["product_category"] . '</td>
+           <td>' . productCategory($row["product_category"]) . '</td>
            <td><img src="img/product/' . $row['product_img'] . '" style="height:100px;" alt="' . $row["product_img"] . '"></td>
            <td>' . $row["product_stock"] . '</td>
            <td>' . $row["product_price"] . '</td>
